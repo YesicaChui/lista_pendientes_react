@@ -1,11 +1,6 @@
-import circuloVacio from "../src/assets/circulo_basio.png"
-import circuloLleno from "../src/assets/circulo_lleno.png"
-import editar from "../src/assets/editar.png"
-import borrar from "../src/assets/tacho.png"
-import ImgBoton from "./components/ImgBoton"
-import ItemTarea from "./components/ItemTarea"
 
-import Tarea from "./components/Tarea"
+import { useState } from "react"
+import ItemTarea from "./components/ItemTarea"
 
 const tareas = [
   {
@@ -26,11 +21,27 @@ const tareas = [
   {
     id:4,
     tarea:"Aprender Animaciones",
+    completado: true
+  },
+  {
+    id:5,
+    tarea:"Aprender Redux",
     completado: false
+  },
+  {
+    id:6,
+    tarea:"Aprender Node",
+    completado: true
   },
 ]
 
 function App() {
+const [inputTarea, setInputTarea] = useState("")
+const [misTareas, setMisTareas] = useState(tareas)
+const agregarTarea = ()=>{
+  console.log(inputTarea)
+
+}
 
   return (
     <>
@@ -38,16 +49,21 @@ function App() {
         <div className=" w-[400px]  m-auto mt-5 bg-slate-400 rounded-md">
           <h1 className="font-bold text-xl text-[#11324D] my-4">Lista de Tareas</h1>
           <div className="flex justify-around ">
-            <p>Nª Tarea: 3</p>
-            <p>Pendientes: 2</p>
+            <p>Nª Tarea: {misTareas.length}</p>
+            <p>Pendientes: {misTareas.reduce((acu,elemento)=>elemento.completado?acu:acu+1,0)}</p>
           </div>
           <p className="text-[#11324D] font-semibold my-4">Agregar Tarea</p>
           <div className=" flex justify-between mb-4 mx-4">
-            <input type="text" placeholder="¿Qué hay que hacer?" className="rounded-[50px] px-5" />
-            <button className="rounded-lg bg-[#11324D] text-white font-semibold p-[4px] text-center px-4">Agregar</button>
+            <input type="text" 
+            placeholder="¿Qué hay que hacer?" 
+            className="rounded-[50px] px-5" 
+            value={inputTarea} 
+            onChange={(data)=>setInputTarea(data.target.value)}
+            />
+            <button onClick={agregarTarea} className="rounded-lg bg-[#11324D] text-white font-semibold p-[4px] text-center px-4">Agregar</button>
           </div>
           {
-            tareas.map((tarea,index)=>(
+            misTareas.map((tarea,index)=>(
              <ItemTarea key={tarea.id} textoTarea={tarea.tarea} estaCompletada={tarea.completado}/>
             ))
           }      
