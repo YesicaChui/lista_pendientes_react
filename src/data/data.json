@@ -1,0 +1,32 @@
+[
+  {
+    "id":1,
+    "tarea":"Aprender React",
+    "completado": false
+  },
+  {
+    "id":2,
+    "tarea":"Aprender Python",
+    "completado": true
+  },
+  {
+    "id":3,
+    "tarea":"Aprender Tailwind",
+    "completado": false
+  },
+  {
+    "id":4,
+    "tarea":"Aprender Animaciones",
+    "completado": true
+  },
+  {
+    "id":5,
+    "tarea":"Aprender Redux",
+    "completado": false
+  },
+  {
+    "id":6,
+    "tarea":"Aprender Node",
+    "completado": true
+  }
+]
